@@ -1,0 +1,42 @@
+program: main.py
+name: qwop-rainbow
+method: bayes
+metric:
+  name: Mean Episode Reward
+  goal: maximize
+early_terminate:
+  type: hyperband
+  min_iter: 500
+  eta: 2
+parameters:
+  env:
+    value: QWOP:QWOP-pixels-v0
+  steps:
+    value: 1_000_000
+  device:
+    value: cuda
+  policy:
+    value: "CNN"
+  lr:
+    min: 0.00001
+    max: 0.1
+  gamma:
+    min: 0.8
+    max: 0.99
+  tau:
+    min: 0.0001
+    max: 0.01
+  batch_size:
+    value: 32
+  wandb:
+    value: True
+  optimizer:
+    values: ["SGD", "Adam"]
+  rec_trigger:
+    value: 100
+  n_step:
+    values: [3, 5, 10, 20]
+  alpha:
+    values: [0.3, 0.4, 0.5, 0.6, 0.7]
+  beta:
+    values: [0.3, 0.4, 0.5, 0.6, 0.7]

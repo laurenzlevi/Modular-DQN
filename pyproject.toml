@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "modulardqn"
+dependencies=[
+    "torch",
+    "prettytable",
+    "gymnasium",
+    "opencv-python"
+]
+version = "1.0.0"
+description = "An implementation of the DQN algorithm and all improvments of rainbow DQN"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [
+    { name = "Laurenz Levi Spielmann", email = "laurenz-levi.spielmann@tu-dortmund.de"},
+    { name = "Julian Bohnenkämper", email = "julian.bohnenkaemper@tu-dortmund.de"},
+    { name = "Pascal Makossa", email="pascal.makossa@tu-dortmund.de"}
+]
+license = {file = "LICENSE"}
+
+[project.scripts]
+modular-dqn = "modulardqn.dqnmain:cli_main"
+
+[tool.setuptools]
+packages = [
+    "modulardqn",
+    "modulardqn.utils",
+    "modulardqn.core",
+    "modulardqn.wrappers",
+    "modulardqn.scripts",
+    "modulardqn.logging"
+]
